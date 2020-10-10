@@ -3,9 +3,9 @@ We will use this instance to perform maintenance for the project.
 
 Make sure you:
 
-1.name the instance nucleus-jumphost
-2.use the machine type of f1-micro
-3.use the default image type (Debian Linux)
+1.name the instance nucleus-jumphost \n
+2.use the machine type of f1-micro \n
+3.use the default image type (Debian Linux) \n
 
 **(gcloud_id) $ gcloud config set compute/zone us-east1-b**
 **(gcloud_id) $ gcloud config set compute/zone us-east1**
@@ -17,17 +17,21 @@ To create a cluster, run the following command.
 (Note: Cluster names must start with a letter, end with an alphanumeric, and cannot be longer than 40 characters.)
 
 1.Create a cluster (in the us-east1-b zone) to host the service
+
 **(gcloud_id)$ gcloud container clusters get-credentials nucleus-jumhost-cluster**
 
 Now to deploy containerized app .Kubernetes Engine uses Kubernetes objects to create and manage your cluster's resources. 
 2.Use the Docker container hello-app (`gcr.io/google-samples/hello-app:2.0`) as a place holder, 
 the team will replace the container with their own work later.
+
 **(gcloud_id)$ kubectl create deployment hello-server --image=gcr.io/google-samples/hello-app:1.0**
 
 3.Expose the app on port 8080
+
 **(gcloud_id)$ kubectl expose deployment hello-server --type=LoadBalancer --port 8080**
 
 Check status using 
+
 **(gcloud_id)$ kubectl get service**
 
 
@@ -45,6 +49,7 @@ sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.
 EOF**
 
 1.Create an instance template
+
 **(gcloud_id)$ gcloud compute instance-templates create nginx-template \
          --metadata-from-file startup-script=startup.sh**
 2.Create a target pool
