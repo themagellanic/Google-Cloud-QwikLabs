@@ -59,23 +59,33 @@ EOF**
 
 **(gcloud_id)$ gcloud compute instance-templates create nginx-template \
          --metadata-from-file startup-script=startup.sh**
+
 2.Create a target pool
+
 **(gcloud_id)$ gcloud compute target-pools create nginx-pool**
+
 3.Create a managed instance group
+
 **(gcloud_id)$ gcloud compute instance-groups managed create nginx-group \
          --base-instance-name nginx \
          --size 2 \
          --template nginx-template \
          --target-pool nginx-pool**
 **(gcloud_id)$ gcloud compute instances list**
+
 4.Create a firewall rule to allow traffic (80/tcp)
+
 **(gcloud_id)$ gcloud compute firewall-rules create www-firewall --allow tcp:80**
+
 5.Create a health check
+
 **(gcloud_id)$ gcloud compute http-health-checks create http-basic-check**
 **(gcloud_id)$ gcloud compute instance-groups managed \
        set-named-ports nginx-group \
        --named-ports http:80**
+       
 6.Create a backend service and attach the manged instance group
+
 **(gcloud_id)$ gcloud compute backend-services create nginx-backend \
       --protocol HTTP --http-health-checks http-basic-check --global**
 **(gcloud_id)$ gcloud compute backend-services add-backend nginx-backend \
@@ -84,11 +94,14 @@ EOF**
     --global**
 
 7.Create a URL map and target HTTP proxy to route requests to your URL map
+
 **(gcloud_id)$ gcloud compute url-maps create web-map \
     --default-service nginx-backend**
 **(gcloud_id)$ gcloud compute target-http-proxies create http-lb-proxy \
 --url-map web-map**
+
 8.Create a forwarding rule
+
 **(gcloud_id)$ gcloud compute forwarding-rules create http-content-rule \
 --global \
 --target-http-proxy http-lb-proxy \
