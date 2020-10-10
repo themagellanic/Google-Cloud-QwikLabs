@@ -3,12 +3,16 @@ We will use this instance to perform maintenance for the project.
 
 Make sure you:
 
-1.name the instance nucleus-jumphost \n
-2.use the machine type of f1-micro \n
-3.use the default image type (Debian Linux) \n
+1.name the instance nucleus-jumphost
 
 **(gcloud_id) $ gcloud config set compute/zone us-east1-b**
+
+2.use the machine type of f1-micro
+
 **(gcloud_id) $ gcloud config set compute/zone us-east1**
+
+3.use the default image type (Debian Linux)
+
 **(gcloud_id)$ gcloud compute instances create nucleus-jumhost --machine-type f1-micro --zone us-east1-b**
 
 
