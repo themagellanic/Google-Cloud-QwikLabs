@@ -1,5 +1,6 @@
-Task 1: Create a project jumphost instance
-We will use this instance to perform maintenance for the project.
+###Task 1: 
+*Create a project jumphost instance
+We will use this instance to perform maintenance for the project.*
 
 Make sure you:
 
@@ -16,9 +17,10 @@ Make sure you:
 **(gcloud_id)$ gcloud compute instances create nucleus-jumhost --machine-type f1-micro --zone us-east1-b**
 
 
-Task 2: Create a Kubernetes service cluster
+###Task 2: 
+*Create a Kubernetes service cluster
 To create a cluster, run the following command.
-(Note: Cluster names must start with a letter, end with an alphanumeric, and cannot be longer than 40 characters.)
+(Note: Cluster names must start with a letter, end with an alphanumeric, and cannot be longer than 40 characters.)*
 
 1.Create a cluster (in the us-east1-b zone) to host the service
 
@@ -39,10 +41,11 @@ Check status using
 **(gcloud_id)$ kubectl get service**
 
 
-Task 3: Setup an HTTP load balancer
+###Task 3: 
+*Setup an HTTP load balancer
 We will serve the site via nginx web servers, but we want to ensure we have a fault tolerant environment, 
 so please create an HTTP load balancer with a managed instance group of two nginx web servers. Use the following to configure the 
-web servers, the team will replace this with their own configuration later.
+web servers, the team will replace this with their own configuration later.*
 
 **(gcloud_id)$ cat << EOF > startup.sh
 #! /bin/bash
